@@ -1,8 +1,8 @@
-/*
- * main.c
- *
- *  Created on: 26 feb 2025
- *      Author: pablo.diez
- */
+#include <stdio.h>
+#include "funcion.h"
 
+int main(void){
+    iniciarPrograma();
 
+    return 0;   
+}
