@@ -55,6 +55,29 @@ void añadirEmpresa(){
 }
 
 void eliminarEmpresa(){
+    char original[] = "data/stock_info.txt";
+    char temporal[] = "data/temporal.txt";
+    char tickerUsuario[10];
+    char linea[250];
+
+    FILE *ficheroOriginal = fopen(original, "r");
+    FILE *ficheroTemporal = fopen(temporal, "w");
+
+    printf("Introduce el ticker de la empresa que quieres borrar: \n");
+    scanf("%s", tickerUsuario);
+
+    while(fgets(linea, 250, ficheroOriginal)){
+        char *tickerEmpresa = strtok(linea, ",");
+
+        if(strcmp(tickerEmpresa, tickerUsuario) != 0){
+            fputs(linea, ficheroTemporal);
+        }
+    }
+    fclose(ficheroOriginal);
+    fclose(ficheroTemporal);
+
+    remove(original);
+    rename(temporal, original);
 
 }
 
