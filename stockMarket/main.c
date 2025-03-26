@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include "funcion.h"
-#include "funcionesBD.h"
+#include "programa.h"
 
 int main(void){
     iniciarPrograma();
