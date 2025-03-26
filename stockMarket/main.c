@@ -4,5 +4,5 @@
 int main(void){
     iniciarPrograma();
 
-    return 0;   
+    return 0;
 }
