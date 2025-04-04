@@ -4,38 +4,27 @@
 #include <ctype.h>
 #include "fichero.h"
 
-void convertirMayusculas(char *str){
-    for(int i = 0; str[i] != '\0'; i++){
-        str[i] = toupper((unsigned char) str[i]);
-    }
-}
-
 void buscarEmpresa(){
-    char linea[256];
-    FILE *file = fopen("data/stock_info.txt", "r");
-    char busqueda[32];
-    char modificado[100];
+     char linea[256];
+     FILE *file = fopen("data/stock_info.csv", "r");
+     char busqueda[32];
+     char modificado[100];
 
-    printf("---Introduce el nombre de la empresa: ");
-    scanf("%s", busqueda);
+     printf("---Introduce el nombre de la empresa (primera mayúsculas): ");
+     scanf("%s", busqueda);
 
-    while(fgets(linea, sizeof(linea), file) != NULL){
-        char *ticker = strtok(linea, ",");
-        char *name = strtok(NULL, ",");
+     while(fgets(linea, sizeof(linea), file) != NULL){
+         char *ticker = strtok(linea, ",");
+         char *name = strtok(NULL, ",");
 
-        if(strlen(name)>strlen(busqueda)){
-            strncpy(modificado, name, strlen(busqueda));
-        }
-
-        convertirMayusculas(modificado);
-        convertirMayusculas(busqueda);
-
-
-       if(strcmp(modificado, busqueda) == 0){
-            printf("Nombre de la empresa: %s, Ticker de la empresa: %s \n",name, ticker);
-        }
-    }
-}
+         if(strlen(name)>strlen(busqueda)){
+             strncpy(modificado, name, strlen(busqueda));
+         }
+        if(strcmp(modificado, busqueda) == 0){
+             printf("Nombre de la empresa: %s, Ticker de la empresa: %s \n",name, ticker);
+         }
+     }
+ }
 
 void añadirEmpresa(){
     FILE *file = fopen("data/stock_info.txt","a");
