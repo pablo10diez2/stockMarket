@@ -4,13 +4,10 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-//void convertirMayusculas();
-//void buscarEmpresa();
-//void añadirEmpresa();
-//void eliminarEmpresa();
+const char* get_current_time();
+void write_log(char* message);
 void gestionarUsuario();
 void gestionarFicheroEmpresa();
-//bool comprobarCredenciales();
 void iniciarSesion();
 void iniciarPrograma();
 

@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <ctype.h>
 #include "fichero.h"
+#include "programa.h"
 
 void buscarEmpresa(){
      char linea[256];
@@ -12,6 +13,7 @@ void buscarEmpresa(){
 
      printf("---Introduce el nombre de la empresa (primera mayúsculas): ");
      scanf("%s", busqueda);
+     write_log("Busqueda de empresa");
 
      while(fgets(linea, sizeof(linea), file) != NULL){
          char *ticker = strtok(linea, ",");
@@ -22,8 +24,6 @@ void buscarEmpresa(){
          }
         if(strcmp(modificado, busqueda) == 0){
              printf("Nombre de la empresa: %s, Ticker de la empresa: %s \n",name, ticker);
-         }else{
-            printf("No disponible");
         }
      }
  }
@@ -41,7 +41,7 @@ void añadirEmpresa(){
     scanf("%s", nombre);
 
     fprintf(file, "%s,%s", ticker, nombre);
-
+    write_log("Empresa añadida");
     fclose(file);
 }
 
@@ -62,6 +62,7 @@ void eliminarEmpresa(){
 
         if(strcmp(tickerEmpresa, tickerUsuario) != 0){
             fputs(linea, ficheroTemporal);
+            write_log("Empresa eliminada");
         }else{
             printf("No disponible");
         }
