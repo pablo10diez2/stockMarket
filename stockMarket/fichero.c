@@ -6,7 +6,7 @@
 
 void buscarEmpresa(){
      char linea[256];
-     FILE *file = fopen("data/stock_info.csv", "r");
+     FILE *file = fopen("data/stock_info.txt", "r");
      char busqueda[32];
      char modificado[100];
 
@@ -22,7 +22,9 @@ void buscarEmpresa(){
          }
         if(strcmp(modificado, busqueda) == 0){
              printf("Nombre de la empresa: %s, Ticker de la empresa: %s \n",name, ticker);
-         }
+         }else{
+            printf("No disponible");
+        }
      }
  }
 
@@ -60,6 +62,8 @@ void eliminarEmpresa(){
 
         if(strcmp(tickerEmpresa, tickerUsuario) != 0){
             fputs(linea, ficheroTemporal);
+        }else{
+            printf("No disponible");
         }
     }
     fclose(ficheroOriginal);
